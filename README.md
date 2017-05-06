@@ -1,4 +1,4 @@
-# TorrentBrowser
+# NyaaBatchDownloadBrowser
 
 1. Look for whatever you want to torrent
 2. Press the top left button "Download current results"
