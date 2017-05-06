@@ -9,8 +9,6 @@ namespace TorrentBrowser
 {
     public partial class Form1 : Form
     {
-        const string DownloadPage = "https://www.nyaa.se/?page=download&";
-
         public Form1()
         {
             InitializeComponent();
@@ -30,14 +28,14 @@ namespace TorrentBrowser
             int index = 0;
             do
             {
-                index = sourcePage.IndexOf("tid=", index);
+                index = sourcePage.IndexOf("magnet:?", index);
                 if (index != -1)
                 {
-                    var endOfTid = sourcePage.IndexOf("\"", index);
-                    var difference = endOfTid - index;
-                    var tid = sourcePage.Substring(index, difference);
+                    var endOfMagnetLink = sourcePage.IndexOf("\"", index);
+                    var difference = endOfMagnetLink - index;
+                    var magnetLink = sourcePage.Substring(index, difference);
 
-                    torrents.Add(DownloadPage + tid);
+                    torrents.Add(magnetLink);
                     index++;
                 }
             } while (index != -1);
@@ -48,22 +46,15 @@ namespace TorrentBrowser
 
         private static void DownloadTorrents(List<string> torrents)
         {
-            using (WebClient webClient = new WebClient())
+            foreach (var torrent in torrents)
             {
-                int count = 1;
-                foreach (var torrent in torrents)
-                {
-                    string name = $"{count}.torrent";
-                    webClient.DownloadFile(torrent, name);
-                    Process.Start(name);
-                    count++;
-                }
+                Process.Start(torrent);
             }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            webBrowser1.Navigate("https://www.nyaa.se/?page=search&cats=1_37&filter=2");
+            webBrowser1.Navigate("https://nyaa.pantsu.cat/search?c=3_5&s=&sort=torrent_id&order=desc&max=300&q=");
         }
     }
 }
