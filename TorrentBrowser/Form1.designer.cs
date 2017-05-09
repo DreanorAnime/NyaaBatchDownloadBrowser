@@ -32,6 +32,7 @@
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.downloadCurrentSearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.downloadTorrentFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +48,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.downloadCurrentSearchToolStripMenuItem});
+            this.downloadCurrentSearchToolStripMenuItem,
+            this.downloadTorrentFilesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1384, 24);
@@ -57,9 +59,15 @@
             // downloadCurrentSearchToolStripMenuItem
             // 
             this.downloadCurrentSearchToolStripMenuItem.Name = "downloadCurrentSearchToolStripMenuItem";
-            this.downloadCurrentSearchToolStripMenuItem.Size = new System.Drawing.Size(151, 20);
-            this.downloadCurrentSearchToolStripMenuItem.Text = "Download current results";
+            this.downloadCurrentSearchToolStripMenuItem.Size = new System.Drawing.Size(147, 20);
+            this.downloadCurrentSearchToolStripMenuItem.Text = "Download Magnet Links";
             this.downloadCurrentSearchToolStripMenuItem.Click += new System.EventHandler(this.downloadCurrentSearchToolStripMenuItem_Click);
+            // 
+            // downloadTorrentFilesToolStripMenuItem
+            // 
+            this.downloadTorrentFilesToolStripMenuItem.Name = "downloadTorrentFilesToolStripMenuItem";
+            this.downloadTorrentFilesToolStripMenuItem.Size = new System.Drawing.Size(141, 20);
+            this.downloadTorrentFilesToolStripMenuItem.Text = "Download Torrent Files";
             // 
             // Form1
             // 
@@ -85,6 +93,7 @@
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem downloadCurrentSearchToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem downloadTorrentFilesToolStripMenuItem;
     }
 }
 

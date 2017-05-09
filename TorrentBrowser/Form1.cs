@@ -14,21 +14,13 @@ namespace TorrentBrowser
             InitializeComponent();
         }
 
-        private void downloadCurrentSearchToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string sourcePage = webBrowser1.DocumentText;
-
-            List<string> torrents = GetTorrents(sourcePage);
-            DownloadTorrents(torrents);
-        }
-
-        private static List<string> GetTorrents(string sourcePage)
+        private static List<string> GetTorrents(string sourcePage, string searchTerm)
         {
             List<string> torrents = new List<string>();
             int index = 0;
             do
             {
-                index = sourcePage.IndexOf("magnet:?", index);
+                index = sourcePage.IndexOf(searchTerm, index);
                 if (index != -1)
                 {
                     var endOfMagnetLink = sourcePage.IndexOf("\"", index);
@@ -55,6 +47,22 @@ namespace TorrentBrowser
         private void Form1_Load(object sender, EventArgs e)
         {
             webBrowser1.Navigate("https://nyaa.pantsu.cat/search?c=3_5&s=&sort=torrent_id&order=desc&max=300&q=");
+        }
+
+        private void torrentFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string sourcePage = webBrowser1.DocumentText;
+
+            List<string> torrents = GetTorrents(sourcePage, "http://anicache.com");
+            DownloadTorrents(torrents);
+        }
+
+        private void downloadCurrentSearchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string sourcePage = webBrowser1.DocumentText;
+
+            List<string> torrents = GetTorrents(sourcePage, "magnet:?");
+            DownloadTorrents(torrents);
         }
     }
 }
